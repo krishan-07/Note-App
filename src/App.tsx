@@ -10,6 +10,19 @@ import { NoteLayout } from "./NoteLayout";
 import { Note } from "./Note";
 import { EditNote } from "./EditNote";
 
+const defaultNote: RawNote = {
+  title: "Welcome to Note App v-1.0",
+  markdown:
+    "### How to create a new note:  \n- Click on the Create button on the top right.\n- After that, you will be redirected to the New Note Page, where you can add a new note and create tags related to it.\n- This App also supports Markdown.\n\n### How to edit tags: \n- Click the Edit tag button on the top right of the Home Page.\n- A modal will appear showing all the tags present and you can edit them there.\n\n### How to edit Notes: \n- Click on the note you want to edit.\n- On the top right side you will see an edit button, click on it.\n- After that, you will be redirected to the Edit page.\n- Edit the note and add or delete tags.\n\n### How to delete Notes:\n- Click on the note you want to delete.\n- Click the delete button which is on top right side of the page.",
+  tagIds: ["60278124-56ee-44a6-82ae-899e46ebab42"],
+  id: "15429fd4-ba1a-4805-a9b1-dd20a908b903",
+};
+
+const defaultTag: Tag = {
+  id: "60278124-56ee-44a6-82ae-899e46ebab42",
+  label: "Introduction",
+};
+
 export type Note = {
   id: string;
 } & NoteData;
@@ -36,8 +49,8 @@ export type Tag = {
 };
 
 function App() {
-  const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
-  const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", []);
+  const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [defaultNote]);
+  const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", [defaultTag]);
 
   const noteWithTags = useMemo(() => {
     return notes.map((note) => {

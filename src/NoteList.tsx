@@ -142,7 +142,7 @@ function NoteCard({ id, title, tags }: simplifiedNote) {
           gap={2}
           className="justify-content-center align-items-center h-100"
         >
-          <span className="fs-5">{title}</span>
+          <span className="fs-5 text-center">{title}</span>
           {tags.length > 0 && (
             <Stack
               gap={1}
